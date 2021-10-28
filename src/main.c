@@ -1,6 +1,7 @@
 #include <stdio.h>
+#include "instr.h"
 
 int main() {
-    // printf("test");
+
     return 0;
 }

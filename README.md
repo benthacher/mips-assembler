@@ -3,7 +3,7 @@
 This assembler is meant to convert MIPS assembly to MIPS machine code.
 
 To-do:
-- [ ] instr_t struct/union thing
+- [x] instr_t struct/union thing
 - [ ] Instruction ID -> Instruction string map
 - [ ] Instruction ID lookup function
 - [ ] LUTs and functions for getting instruction attributes based on ID
