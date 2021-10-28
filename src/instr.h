@@ -125,7 +125,6 @@ typedef enum {
 
 // ID bound #defines
 #define NUM_INSTR (XORI + 1)
-#define NUM_REGS (32)
 #define R_TYPE_START (ADD)
 #define R_TYPE_LEN (XOR - R_TYPE_START + 1)
 #define I_TYPE_START (ADDI)
@@ -135,7 +134,6 @@ typedef enum {
 
 // LUTs
 extern const char *INSTRUCTIONS[];
-extern const char *REGISTERS[];
 extern const RTypeParamOrder R_TYPE_ORDER[];
 extern const ITypeParamOrder I_TYPE_ORDER[];
 extern const uint8_t OPCODES[];
@@ -144,6 +142,5 @@ extern const uint8_t FUNCTS[];
 // Functions
 uint32_t pack_instr(const instr_t *instr);
 InstrID find_instr(const char *str);
-int find_register(const char *str);
 
 #endif
