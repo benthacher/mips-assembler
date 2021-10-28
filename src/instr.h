@@ -126,11 +126,14 @@ typedef enum {
 // ID bound #defines
 #define NUM_INSTR (XORI + 1)
 #define R_TYPE_START (ADD)
-#define R_TYPE_LEN (XOR - R_TYPE_START + 1)
+#define R_TYPE_END (XOR)
+#define R_TYPE_LEN (R_TYPE_END - R_TYPE_START + 1)
 #define I_TYPE_START (ADDI)
-#define I_TYPE_LEN (XORI - I_TYPE_START + 1)
+#define I_TYPE_END (XORI)
+#define I_TYPE_LEN (I_TYPE_END - I_TYPE_START + 1)
 #define J_TYPE_START (J)
-#define J_TYPE_LEN (JAL - J_TYPE_START + 1)
+#define J_TYPE_END (JAL)
+#define J_TYPE_LEN (J_TYPE_END - J_TYPE_START + 1)
 
 // LUTs
 extern const char *INSTRUCTIONS[];
@@ -142,5 +145,9 @@ extern const uint8_t FUNCTS[];
 // Functions
 uint32_t pack_instr(const instr_t *instr);
 InstrID find_instr(const char *str);
+InstrType get_type(InstrID id);
+int get_opcode(InstrID id);
+int get_funct(InstrID id);
+int get_param_order(InstrID id);
 
 #endif

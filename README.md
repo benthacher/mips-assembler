@@ -7,6 +7,6 @@ To-do:
 - [x] Instruction ID -> Instruction string map
 - [x] Register lookup
 - [x] Instruction ID lookup function
-- [ ] LUTs and functions for getting instruction attributes based on ID
+- [x] LUTs and functions for getting instruction attributes based on ID
 - [ ] Pass 1 (big linked list for label/PC address lookup during pass 2)
 - [ ] Pass 2, look through text and create instructions, shove them in binary file
