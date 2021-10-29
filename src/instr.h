@@ -1,7 +1,7 @@
-#ifndef INSTR_H
-#define INSTR_H
+#pragma once
 
 #include <stdint.h>
+#include <stdio.h>
 
 typedef enum {
     R_TYPE,
@@ -110,16 +110,14 @@ typedef enum {
     RD_RS_RT,
     RD_RT_RS,
     RD_RT_SA,
-    NONE
-} RTypeParamOrder;
-
-typedef enum {
+    LABEL,
     RT_RS_IMM,
     RS_RT_LABEL,
     RS_LABEL,
     RT_IMM_RS,
-    RT_IMM
-} ITypeParamOrder;
+    RT_IMM,
+    NONE
+} ParamOrder;
 
 // J Types have one param order, LABEL
 
@@ -137,8 +135,7 @@ typedef enum {
 
 // LUTs
 extern const char *INSTRUCTIONS[];
-extern const RTypeParamOrder R_TYPE_ORDER[];
-extern const ITypeParamOrder I_TYPE_ORDER[];
+extern const ParamOrder PARAM_ORDERS[];
 extern const uint8_t OPCODES[];
 extern const uint8_t FUNCTS[];
 
@@ -148,6 +145,3 @@ InstrID find_instr(const char *str);
 InstrType get_type(InstrID id);
 int get_opcode(InstrID id);
 int get_funct(InstrID id);
-int get_param_order(InstrID id);
-
-#endif

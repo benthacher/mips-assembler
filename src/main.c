@@ -1,14 +1,12 @@
 #include <stdio.h>
-#include "instr.h"
-#include "register.h"
+#include "assemble.h"
 
 int main() {
-    char *str = "ad";
+    int ret = assemble("./test.asm", "./test.bin");
 
-    int id = find_instr(str);
-    int reg = find_register("$2");
+    if (ret == -1) {
+        printf("Assembly error.");
+    }
 
-    printf("reg: %d", reg);
-
-    return 0;
+    return ret;
 }

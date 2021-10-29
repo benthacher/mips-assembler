@@ -122,7 +122,7 @@ const uint8_t FUNCTS[] = {
     0b100110, /* XOR */
 };
 
-const RTypeParamOrder R_TYPE_ORDER[] = {
+const ParamOrder PARAM_ORDERS[] = {
     RD_RS_RT, /* ADD */
     RD_RS_RT, /* ADDU */
     RD_RS_RT, /* AND */
@@ -151,9 +151,8 @@ const RTypeParamOrder R_TYPE_ORDER[] = {
     RD_RS_RT, /* SUBU */ 
     NONE, /* SYSCALL */
     RD_RS_RT, /* XOR */
-};
-
-const ITypeParamOrder I_TYPE_ORDER[] = {
+    LABEL, /* J */
+    LABEL, /* JAL */
     RT_RS_IMM, /* ADDI */
     RT_RS_IMM, /* ADDIU */
     RT_RS_IMM, /* ANDI */
@@ -255,18 +254,4 @@ int get_funct(InstrID id) {
 
     // type must be R-type
     return FUNCTS[id];
-}
-
-/**
- * Lookup parameter order
- */
-int get_param_order(InstrID id) {
-    switch (get_type(id)) {
-        case R_TYPE:
-            return R_TYPE_ORDER[id];
-        case I_TYPE:
-            return I_TYPE_ORDER[id - R_TYPE_LEN - J_TYPE_LEN];
-        default:
-            return -1;
-    }
 }
