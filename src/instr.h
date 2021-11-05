@@ -15,12 +15,12 @@ typedef struct {
     InstrType type;  // type of instruction
     uint32_t target; // J type
     uint16_t imm;    // I type
+    uint16_t shamt;  // R type; 16 bits because it's immediate, but throws error if value is over 5 bits
     uint8_t opcode;  // all types
     uint8_t funct;   // R type
     uint8_t rs;      // R type
     uint8_t rt;      // R type
     uint8_t rd;      // R type
-    uint8_t shamt;   // R type
 } instr_t;
 
 // positions of all register parameters
@@ -140,7 +140,7 @@ extern const uint8_t OPCODES[];
 extern const uint8_t FUNCTS[];
 
 // Functions
-uint32_t pack_instr(const instr_t *instr);
+int64_t pack_instr(const instr_t *instr);
 InstrID find_instr(const char *str);
 InstrType get_type(InstrID id);
 int get_opcode(InstrID id);

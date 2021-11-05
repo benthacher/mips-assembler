@@ -179,10 +179,14 @@ const ParamOrder PARAM_ORDERS[] = {
     RT_RS_IMM, /* XORI */
 };
 
-uint32_t pack_instr(const instr_t *instr) {
+int64_t pack_instr(const instr_t *instr) {
     // based on instruction type, pack word differently
     switch (instr->type) {
         case R_TYPE:
+            if (instr->shamt > 31) {
+                printf("SHAMT TOO BIG! (%d)", instr->shamt);
+                return -1;
+            }
             return (
                 ((instr->opcode & INSTR_OPCODE_MSK) << INSTR_OPCODE_POS) | 
                 ((instr->rs & INSTR_RS_MSK) << INSTR_RS_POS) | 
